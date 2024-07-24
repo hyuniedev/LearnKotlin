@@ -6,13 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -21,7 +26,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,6 +47,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             THComposeKnowledgeBaseTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
+                    AppEqualFlutter()
                 }
             }
         }
@@ -208,10 +216,58 @@ fun GreetingTask3(modifier: Modifier = Modifier){
     }
 }
 
+// App giong Flutter
+@Composable
+fun AppEqualFlutter(modifier: Modifier = Modifier){
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                boxMethod(name = "Box 1", direction = Alignment.BottomEnd)
+                boxMethod(name = "Box 2", direction = Alignment.BottomStart)
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                boxMethod(name = "Box 3", direction = Alignment.TopEnd)
+                boxMethod(name = "Box 4", direction = Alignment.TopStart)
+            }
+        }
+        boxMethod(name = "Hello World",
+            direction = Alignment.Center,
+            boxRadius = true,
+            Modifier.align(Alignment.Center))
+    }
+}
+@Composable
+fun boxMethod(name: String, direction: Alignment, boxRadius: Boolean = false, modifier: Modifier = Modifier){
+    Box(
+        modifier = modifier
+            .width(160.dp)
+            .height(160.dp)
+            .clip(shape = RoundedCornerShape(if (boxRadius)100.dp else 0.dp))
+            .background(if (boxRadius) Color.Blue else Color.Green)
+    ){
+        Text(
+            text = name,
+            modifier = Modifier.align(direction),
+            color = Color.Red,
+            fontSize = 24.sp
+        )
+    }
+}
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     THComposeKnowledgeBaseTheme {
-        GreetingTask3()
+        AppEqualFlutter()
     }
 }
