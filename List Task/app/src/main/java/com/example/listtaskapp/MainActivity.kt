@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -15,15 +16,23 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -50,6 +59,10 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomUI(modifier: Modifier = Modifier) {
+    var tasks = remember {
+        mutableStateListOf<Task>()
+    }
+    var isOpenFAB = remember {mutableStateOf(false)}
     Box {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -75,15 +88,11 @@ fun CustomUI(modifier: Modifier = Modifier) {
                     .padding(all = 20.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                TaskCard(task = Task(1,"Hyu Nie"))
-                TaskCard(task = Task(2,"Huu Nien"))
-                repeat(20){
-                    TaskCard(task = Task(2,"Huu Nien"))
-                }
+                tasks.forEach { TaskCard(task = it) }
             }
         }
         FloatingActionButton(
-            onClick = {},
+            onClick = {isOpenFAB.value = true},
             modifier = Modifier
                 .padding(18.dp)
                 .width(50.dp)
@@ -98,6 +107,34 @@ fun CustomUI(modifier: Modifier = Modifier) {
                 contentDescription = null,
                 modifier = Modifier.size(30.dp)
             )
+        }
+    }
+    if(isOpenFAB.value){
+        var text = remember {
+            mutableStateOf("")
+        }
+        ModalBottomSheet(
+            onDismissRequest = {isOpenFAB.value = false},
+            sheetState = rememberModalBottomSheetState()
+        ) {
+            Column(modifier = Modifier.fillMaxWidth().height(160.dp).padding(25.dp)) {
+                TextField(
+                    value = text.value,
+                    onValueChange = {newText -> text.value = newText},
+                    placeholder = {Text(text = "Enter name of Task...")},
+                    label = { Text(text = "Add your task")},
+                    modifier = Modifier.padding(bottom = 30.dp).fillMaxWidth().height(30.dp)
+                )
+                Button(onClick = {
+                    val id = if(tasks.size==0) 1 else tasks.size + 1
+                    tasks.add(Task(id,text.value))
+                    isOpenFAB.value = false
+                },
+                    modifier = Modifier.fillMaxWidth().height(40.dp)
+                ) {
+                    Text(text = "Add Task", fontSize = 20.sp)
+                }
+            }
         }
     }
 }
