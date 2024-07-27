@@ -6,9 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.imeNestedScroll
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -117,13 +123,13 @@ fun CustomUI(modifier: Modifier = Modifier) {
             onDismissRequest = {isOpenFAB.value = false},
             sheetState = rememberModalBottomSheetState()
         ) {
-            Column(modifier = Modifier.fillMaxWidth().height(160.dp).padding(25.dp)) {
+            Column(modifier = Modifier.fillMaxWidth().height(200.dp).padding(25.dp)) {
                 TextField(
                     value = text.value,
                     onValueChange = {newText -> text.value = newText},
                     placeholder = {Text(text = "Enter name of Task...")},
                     label = { Text(text = "Add your task")},
-                    modifier = Modifier.padding(bottom = 30.dp).fillMaxWidth().height(30.dp)
+                    modifier = Modifier.padding(bottom = 30.dp).fillMaxWidth()
                 )
                 Button(onClick = {
                     val id = if(tasks.size==0) 1 else tasks.size + 1
