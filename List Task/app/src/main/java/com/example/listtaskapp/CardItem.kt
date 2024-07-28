@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 data class Task(val id:Int, val name: String)
 
 @Composable
-fun TaskCard(task: Task, modifier: Modifier = Modifier){
+fun TaskCard(task: Task, funcDelTask: (Task)->Unit,modifier: Modifier = Modifier){
     Row(
         modifier = Modifier
             .padding(bottom = 20.dp)
@@ -43,7 +43,10 @@ fun TaskCard(task: Task, modifier: Modifier = Modifier){
             fontWeight = FontWeight.Bold,
             color = Color.DarkGray
         )
-        IconButton(onClick = {}, modifier = Modifier.size(24.dp)) {
+        IconButton(
+            onClick = {funcDelTask(task)},
+            modifier = Modifier.size(24.dp)
+        ) {
             Icon(
                 painter = painterResource(id = R.drawable.baseline_delete_24),
                 contentDescription = null,
@@ -51,10 +54,4 @@ fun TaskCard(task: Task, modifier: Modifier = Modifier){
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun TaskCardPreview(){
-    TaskCard(Task(1,"Hyu Nie"))
 }

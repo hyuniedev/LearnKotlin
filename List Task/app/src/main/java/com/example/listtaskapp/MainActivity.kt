@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.imeNestedScroll
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -49,6 +51,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.example.listtaskapp.ui.theme.ListTaskAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,8 +65,13 @@ class MainActivity : ComponentActivity() {
                 CustomUI()
             }
         }
+        WindowCompat.setDecorFitsSystemWindows(window,false)
+        val controller = WindowInsetsControllerCompat(window,window.decorView)
+        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.hide(WindowInsetsCompat.Type.systemBars())
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomUI(modifier: Modifier = Modifier) {
@@ -71,7 +81,7 @@ fun CustomUI(modifier: Modifier = Modifier) {
     var isOpenFAB = remember {mutableStateOf(false)}
     Box {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.windowInsetsPadding(WindowInsets.navigationBars).fillMaxSize()
         ) {
             TopAppBar(
                 title = {
@@ -94,7 +104,7 @@ fun CustomUI(modifier: Modifier = Modifier) {
                     .padding(all = 20.dp)
                     .verticalScroll(rememberScrollState())
             ) {
-                tasks.forEach { TaskCard(task = it) }
+                tasks.forEach { TaskCard(task = it, funcDelTask = {taskDel -> tasks.remove(taskDel) }) }
             }
         }
         FloatingActionButton(
