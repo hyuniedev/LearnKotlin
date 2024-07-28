@@ -30,7 +30,7 @@ fun TaskCard(task: Task, funcDelTask: (Task)->Unit,modifier: Modifier = Modifier
         modifier = Modifier
             .padding(bottom = 20.dp)
             .clip(shape = RoundedCornerShape(12.dp))
-            .background(color = Color.Cyan)
+            .background(color = if(task.id%2==0) Color.Cyan else Color.Green)
             .padding(horizontal = 10.dp)
             .height(55.dp)
             .fillMaxWidth(),
