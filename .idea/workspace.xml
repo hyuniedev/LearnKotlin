@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d22c397-fc4d-45b3-b6f7-5dbab5f0f059" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LearnKotlin.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MySelfManagement/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MySelfManagement/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MySelfManagement/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MySelfManagement/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic-android-kotlin-compose-training-tip-calculator/app/src/main/java/com/example/tiptime/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/basic-android-kotlin-compose-training-tip-calculator/app/src/main/java/com/example/tiptime/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic-android-kotlin-compose-training-tip-calculator/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/basic-android-kotlin-compose-training-tip-calculator/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +27,24 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2jUuCGNELc4yiP6qTSZu3fIPp21" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,7 +59,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/hyunie/Documents/MyCode/LearnKotlin/Happy Birthday",
+    "last_opened_file_path": "/home/hyunie/Documents/MyCode",
     "settings.editor.selected.configurable": "AndroidSdkUpdater"
   },
   "keyToStringList": {
